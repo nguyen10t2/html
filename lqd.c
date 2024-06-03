@@ -200,9 +200,7 @@ TreeNode *parse_html(const char *str)
     p++;
     while (*p != '\0')
     {
-        while (*p == '\n')
-            p++;
-        while (*p == ' ')
+        while (*p == ' ' || *p == '\n')
             p++;
         if (*p == '<')
         {
@@ -225,8 +223,7 @@ TreeNode *parse_html(const char *str)
                     tag_name = text_name;
                 TreeNode *new_node = create_tree_node(tag_name, NULL, curr);
                 if (attr_name && attr_value)
-                    add_attribute(new_node, attr_name, attr_value);
-                if (curr == NULL)
+                    add_attribute(new_node, attr_name, attr_valif (curr == NULL)
                     root = new_node;
                 else
                     add_child(curr, new_node);
